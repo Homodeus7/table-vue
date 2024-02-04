@@ -1,41 +1,40 @@
 <template>
   <BaseContainer>
-    <h1 class="text-3xl">Проведение ТО и мелкий ремонт</h1>
-    <BaseCard base> aasdasd</BaseCard>
-    <table>
-      <thead>
-        <tr>
-          <td
-            v-for="(column, ind) in columns"
-            :style="{ position: 'relative', width: column.width + 'px' }"
-          >
-            {{ column.label }}
-            <div
-              style="
-                cursor: col-resize;
-                right: 0;
-                position: absolute;
-                top: 0;
-                width: 5px;
-                bottom: 0;
-              "
-              @mousedown="startMove($event, ind)"
-            ></div>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="row in rows">
-          <td v-for="column in columns">{{ row[column.name] }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="flex flex-col gap-6">
+      <h1 class="text-3xl">Проведение ТО и мелкий ремонт</h1>
+      <BaseNav />
+      <BaseCard base> aasdasd</BaseCard>
+      <BaseCard base>
+        <table>
+          <thead>
+            <tr>
+              <td
+                v-for="(column, ind) in columns"
+                :style="{ position: 'relative', width: column.width + 'px' }"
+              >
+                {{ column.label }}
+                <div
+                  class="cursor-col-resize absolute top-0 right-0 bottom-0 w-1"
+                  @mousedown="startMove($event, ind)"
+                ></div>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="row in rows">
+              <td v-for="column in columns">{{ row[column.name] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </BaseCard>
+    </div>
   </BaseContainer>
 </template>
 
 <script lang="ts" setup>
 import BaseContainer from '@/components/base/BaseContainer.vue'
 import BaseCard from '@/components/base/BaseCard.vue'
+import BaseNav from '@/components/base/BaseNav.vue'
 
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 

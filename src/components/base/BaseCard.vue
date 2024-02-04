@@ -34,7 +34,7 @@ onMounted(() => {
   }
 })
 </script>
-<style lang="scss">
+<style>
 .base {
   border: 1px solid #eeeff1;
   background-color: white;
