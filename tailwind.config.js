@@ -5,7 +5,8 @@ module.exports = {
       colors: {
         'tory-blue': '#1253a2',
         'dodger-blue': '#2f8cff',
-        'pigeon-post': '#a6b7d4'
+        'pigeon-post': '#a6b7d4',
+        'pale-grey': '#eeeff1'
       },
       spacing: {
         '8xl': '88rem',

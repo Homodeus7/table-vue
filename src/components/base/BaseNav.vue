@@ -1,23 +1,23 @@
 <template>
   <nav class="flex gap-6">
-    <span
-      v-for="item in titleTableVeiw"
-      class="font-semibold cursor-pointer text-tory-blue hover:text-black"
-      :class="{ 'text-black': item.value === ui.tableView }"
+    <li
+      v-for="item in titleTable"
+      :key="item.value"
+      class="font-semibold cursor-pointer text-tory-blue hover:text-black duration-100"
+      :class="{ '!text-black': item.value === ui.tableView }"
       @click="ui.tableView = item.value"
     >
       {{ item.name }}
-    </span>
+    </li>
   </nav>
 </template>
 <script lang="ts" setup>
 import { useUI } from '@/store/ui/index'
-import { reactive } from 'vue'
 const ui = useUI()
 
-const titleTableVeiw = reactive([
-  { name: 'Общее', value: 'common' },
-  { name: 'Товары', value: 'gds' },
-  { name: 'Доп. расходы', value: 'exps' }
-])
+export interface titleTableVeiwProps {
+  titleTable: { name?: string; value?: string }[]
+}
+
+defineProps<titleTableVeiwProps>()
 </script>
