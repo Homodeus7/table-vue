@@ -7,6 +7,7 @@ export interface BaseButtonProps extends /* @vue-ignore */ ButtonHTMLAttributes 
   width?: string
   loading?: boolean
   base?: boolean
+  icon?: boolean
 }
 
 const props = defineProps<BaseButtonProps>()
@@ -44,7 +45,6 @@ onMounted(() => {
   >
     <slot name="prefix-icon"></slot>
     <slot></slot>
-    <LoaderIcon v-if="loading" size="18px" class="animate-spin ml-2" />
     <slot name="suffix-icon"></slot>
   </button>
 </template>
@@ -58,32 +58,33 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
   border-radius: 1rem;
-  font: {
-    weight: 400;
-  }
+  font-size: 14px;
+  font-weight: 400;
   &.base {
-    height: 40px;
-    width: 120px;
-    color: #f47a0e;
-    border-radius: 10px;
-    border: 1px solid #f47a0e;
-    background: rgb(255, 255, 255, 4%);
+    height: 35px;
+    width: 146px;
+    color: white;
+    border-radius: 5px;
+    background: #2f8cff;
     transition: all linear $timeout;
     &:hover {
-      color: #c38e60;
-      border: 1px solid #c38e60;
+      background: #5ea7ff;
     }
     &:active {
-      color: #824614;
-      border: 1px solid #824614;
+      background: #0073fe;
     }
     &:disabled {
       cursor: not-allowed;
       pointer-events: none;
-      color: #635b5b;
-      border: 1px solid #635b5b;
+      color: #738090;
     }
+  }
+  &.icon {
+    width: max-content;
+    padding-right: 15px;
+    border-radius: 0;
   }
 }
 </style>

@@ -18,6 +18,7 @@ import { ref, onMounted } from 'vue'
 export interface CardProps {
   width?: string
   base?: boolean
+  baseTable?: boolean
 }
 const card = ref<HTMLDivElement>()
 const props = withDefaults(defineProps<CardProps>(), {})
@@ -34,12 +35,15 @@ onMounted(() => {
   }
 })
 </script>
-<style>
+<style lang="scss">
 .base {
   border: 1px solid #eeeff1;
   background-color: white;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 25px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.07);
+  &Table {
+    padding: 0 0 25px 0;
+  }
 }
 </style>

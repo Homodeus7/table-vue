@@ -1,13 +1,10 @@
-export interface BaseColumns {
-  name: string
-  label: string
-  width: number
-}
-
-// auth types
-export interface BaseRows {
-  name: string
-  last_name: string
-  phone: string
-  email: string
+export interface Data {
+  titlesTableVeiw: { name: string; value: string }[]
+  rows: {
+    name: string
+    price: string
+    quantity: string
+    sum: string
+  }[]
+  columns: { name: string; label: string; width: number }[]
 }
