@@ -25,32 +25,13 @@
       />
     </tbody>
   </table>
-  <div class="w-full flex flex-col px-[10px] pt-[15px]">
-    <div class="self-end min-w-[300px] flex flex-col gap-[5px] text-sm">
-      <div class="bg-catskill-white p-[15px] border border-pale-grey rounded-[5px]">
-        <div
-          v-for="item in dataSums"
-          :key="`${item.name}+${item.value}`"
-          class="flex justify-between"
-        >
-          <span class="text-[#8f8f8f]">{{ item.name }}:</span>
-          <span>{{ item.value }}</span>
-        </div>
-      </div>
-      <div class="bg-catskill-white p-[15px] border border-pale-grey rounded-[5px]">
-        <div class="flex justify-between">
-          <span>Общая сумма:</span>
-          <span class="font-semibold">{{ amount }} руб</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <BaseTableSum :rows="rows"/>
 </template>
 
 <script lang="ts" setup>
 import BaseRow from '@/components/base/BaseRow.vue'
-import { formatObjectNumber } from '@/utils/index'
-import { ref, reactive, onMounted, onUnmounted, computed } from 'vue'
+import BaseTableSum from '@/components/base/BaseTableSum.vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useElementBounding } from '@vueuse/core'
 
 export interface BaseTableProps {
@@ -73,20 +54,6 @@ const props = defineProps<BaseTableProps>()
 const resize = ref(false)
 const startOffset = ref(0)
 const selectedCol = ref(0)
-
-const amount = computed(() =>
-  formatObjectNumber(props.rows.map((el) => Number(el.sum)).reduce((a, b) => a + b))
-)
-const quantity = computed(() =>
-  formatObjectNumber(props.rows.map((el) => Number(el.quantity)).reduce((a, b) => a + b))
-)
-const wheight = computed(() => formatObjectNumber(Number(quantity.value) * 20))
-
-const dataSums = reactive([
-  { name: 'Сумма', value: `${amount.value} руб` },
-  { name: 'Кол-во', value: `${quantity.value} шт` },
-  { name: 'Общий вес', value: `${wheight.value} кг` }
-])
 
 const move = (e: any) => {
   if (resize.value) {
