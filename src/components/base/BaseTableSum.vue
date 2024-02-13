@@ -1,5 +1,5 @@
 <template>
-   <div class="w-full flex flex-col px-[10px] pt-[15px]">
+   <div class="w-full flex flex-col px-[10px]">
     <div class="self-end min-w-[300px] flex flex-col gap-[5px] text-sm">
       <div class="bg-catskill-white p-[15px] border border-pale-grey rounded-[5px]">
         <div

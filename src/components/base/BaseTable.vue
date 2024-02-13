@@ -1,31 +1,35 @@
 <template>
-  <table class="leading-none whitespace-nowrap">
-    <thead>
-      <tr>
-        <td
-          v-for="(column, ind) in columns"
-          class="relative font-semibold px-[10px] py-[14px] border border-pale-grey first:border-l-0 last:border-r-0"
-          :style="{ width: `${column.width}px` }"
-        >
-            {{ column.label }}
-          <div
-            class="cursor-col-resize absolute top-0 right-0 bottom-0 w-1 hover:w-[3px] hover:bg-dodger-blue"
-            @mousedown="startMove($event, ind)"
-          ></div>
-        </td>
-      </tr>
-    </thead>
-    <tbody>
-      <BaseRow
-        v-for="(row, ind) in rows"
-        :key="`${row.name}-${ind}`"
-        :columns="columns"
-        :rows="row"
-        :ind="ind"
-      />
-    </tbody>
-  </table>
-  <BaseTableSum :rows="rows"/>
+  <div class="flex flex-col gap-4">
+    <div>
+      <table class="leading-none whitespace-nowrap">
+        <thead>
+          <tr>
+            <td
+              v-for="(column, ind) in columns"
+              class="relative font-semibold px-[10px] py-[14px] border border-pale-grey first:border-l-0 last:border-r-0"
+              :style="{ width: `${column.width}px` }"
+            >
+                {{ column.label }}
+              <div
+                class="cursor-col-resize absolute top-0 right-0 bottom-0 w-1 hover:w-[3px] hover:bg-dodger-blue"
+                @mousedown="startMove($event, ind)"
+              ></div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <BaseRow
+            v-for="(row, ind) in rows"
+            :key="`${row.name}-${ind}`"
+            :columns="columns"
+            :rows="row"
+            :ind="ind"
+          />
+        </tbody>
+      </table>
+  </div>
+    <BaseTableSum :rows="rows"/>
+  </div>
 </template>
 
 <script lang="ts" setup>
