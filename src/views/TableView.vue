@@ -25,7 +25,7 @@
               <BaseDropdownMenu
                 v-if="columnsMenu"
                 v-on-click-outside="onClickOutsideHandler"
-                @drop="toggleMenu()"
+                @drop="toggleMenu"
               />
             </transition>
             <transition name="visible">
@@ -42,6 +42,7 @@
           </div>
           <div>
             <BaseTable :columns="selectedOptions" :rows="rows" />
+            <!-- <TableV /> -->
           </div>
         </div>
       </BaseCard>
@@ -54,6 +55,7 @@ import BaseContainer from '@/components/base/BaseContainer.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseCard from '@/components/base/BaseCard.vue'
 import BaseTable from '@/components/base/BaseTable.vue'
+import TableV from '@/components/base/TableV.vue'
 import BaseNav from '@/components/base/BaseNav.vue'
 import BaseCheckbox from '@/components/base/BaseCheckbox.vue'
 import BaseDropdownMenu from '@/components/base/BaseDropdownMenu.vue'
@@ -67,6 +69,8 @@ const columnsSubMenu = ref(false)
 const ignoreElRef = ref()
 
 const selectedOptions = ref([
+  { name: 'delete', label: '', width: 0 },
+  { name: 'dropdown', label: '', width: 0 },
   { name: 'name', label: 'Наименование еденицы', width: 0 },
   { name: 'price', label: 'Цена', width: 0 },
   { name: 'quantity', label: 'Кол-во', width: 0 },

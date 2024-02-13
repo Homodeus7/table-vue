@@ -1,6 +1,7 @@
 export interface Data {
   titlesTableVeiw: { name: string; value: string }[]
   rows: {
+    ind: number
     name: string
     price: string
     quantity: string
